@@ -1,0 +1,12 @@
+---
+import { Image } from 'astro:assets';
+const { src, alt } = Astro.props;
+---
+<Image 
+  src={src} 
+  alt={alt}
+  widths={[400, 800, 1200]}
+  formats={['webp']}
+  loading="lazy"
+  decoding="async"
+/>

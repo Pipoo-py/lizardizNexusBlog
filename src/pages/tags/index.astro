@@ -1,0 +1,79 @@
+---
+  import { getCollection } from "astro:content";
+  import BaseHead from "../../components/BaseHead.astro"
+  import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+  import { Header } from "../../components/Header.jsx";
+  const allPosts = await getCollection("blog");
+  const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+  <BaseHead title={ SITE_TITLE }  description={ SITE_DESCRIPTION }/>
+</head>
+  <body>
+    <Header client:load/>
+    <main>
+      <div class="main__container">
+        <h1>
+          Todas las categorías / tags existentes
+        </h1>
+        <div class="tags__container">
+          <ul class="tags__container-ul">
+            {  tags.map((tag) => (
+              <li class="tag"><a href={`/tags/${tag}`}>{ tag[0].toUpperCase() + tag.substring(1) }</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .main__container{
+    padding: 32px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1{
+      color: var(--texto-carbon);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+  }
+  .tags__container-ul{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+
+  .tag {
+    list-style: none;
+    background-color: var(--contraste-gris-perla);
+    padding: 24px;
+    display: grid;
+    place-content: center;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color .3s;
+  }
+  
+  .tag:hover{
+    background-color: var(--acento-azul-profundo);
+  }
+
+  .tag:hover a{
+    color: var(--base-blanco-nieve);
+  }
+
+  .tag a {
+    color: var(--texto-carbon);
+    text-decoration: none;
+  }
+
+  body.dark .tag a{
+  color: var(--contraste-gris-perla);
+}
+</style>

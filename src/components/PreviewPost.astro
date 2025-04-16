@@ -1,0 +1,109 @@
+---
+  const { title , date, description, tags, url } = Astro.props;
+---
+
+<div class="preview__container">
+  <a href={ url }>
+  <h3 class="preview__title">
+    { title } 
+  </h3>
+  </a>
+  <p class="preview__description">
+    { description }
+  </p>
+  <ul class="preview__ul-tags">
+    {
+      tags.map(tag=>(
+        <li><a href={`/tags/${tag}`}>{ tag[0].toUpperCase() + tag.substring(1) }</a></li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .preview__container {
+  background-color: var(--base-blanco-nieve);
+  border-radius: 6px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.05);
+  transition: var(--theme-transition);
+  transition: transform .3s;
+}
+
+.preview__container a{
+  text-decoration: none;
+}
+
+.preview__container:hover{
+  transform: translateY(-8px);
+}
+
+body.dark .preview__container {
+  background-color: var(--texto-carbon);
+  box-shadow: 0 0.25rem 0.8rem rgba(0, 0, 0, 0.3);
+}
+
+.preview__title {
+  font-size: 1.5rem;
+  color: var(--texto-carbon);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+body.dark .preview__container .preview__title {
+  color: var(--base-blanco-nieve);
+}
+
+.preview__description {
+  font-size: 1rem;
+  color: var(--texto-pizarra);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+body.dark .preview__container .preview__description {
+  color: var(--contraste-gris-perla);
+}
+
+.preview__ul-tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.preview__ul-tags li {
+  margin-bottom: 0;
+}
+
+.preview__ul-tags a {
+  display: inline-block;
+  background-color: var(--contraste-gris-perla);
+  color: var(--texto-carbon);
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.2rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.preview__ul-tags a:hover {
+  background-color: var(--acento-azul-profundo);
+  color: var(--base-blanco-nieve);
+}
+
+body.dark .preview__container .preview__ul-tags a {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--contraste-gris-perla);
+}
+
+body.dark .preview__container .preview__ul-tags a:hover {
+  background-color: var(--acento-teal);
+  color: var(--texto-carbon);
+}
+</style>

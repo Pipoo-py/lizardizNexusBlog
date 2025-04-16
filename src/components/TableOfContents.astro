@@ -1,0 +1,73 @@
+---
+const { headings } = Astro.props;
+---
+<nav aria-labelledby="toc-heading" class="table-of-contents">
+  <h2 class="table-of-contents__title">Contenido</h2>
+  <ul>
+    {headings.filter(h => h.depth === 2).map(h => (
+      <li key={h.slug}>
+        <a href={`#${h.text.toLowerCase().split(" ").join("-")}`}>{h.text}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .table-of-contents {
+  background-color: var(--contraste-gris-perla);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 0.1rem solid var(--contraste-gris-perla);
+  transition: var(--theme-transition);
+}
+
+.table-of-contents h2 {
+  font-size: 1.2rem;
+  color: var(--texto-carbon);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+}
+
+.table-of-contents ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.table-of-contents li {
+  margin-bottom: 0.3rem;
+}
+
+.table-of-contents a {
+  color: var(--texto-pizarra);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+  display: block;
+  padding: 0.2rem 0;
+  border-bottom: none;
+}
+
+.table-of-contents a:hover {
+  color: var(--acento-azul-profundo);
+  padding-left: 0.5rem;
+}
+
+.table-of-contents ul ul {
+  margin-left: 1rem;
+}
+
+.table-of-contents ul ul a {
+  font-size: 0.9rem;
+}
+
+.table-of-contents ul ul ul a {
+  font-size: 0.85rem;
+}
+
+body.dark .table-of-contents .table-of-contents__title{
+  color: var(--base-blanco-nieve);
+}
+</style>
