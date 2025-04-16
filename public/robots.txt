@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /_astro/
+Disallow: /_functions/
+Disallow: /admin/
+Disallow: /*.xml$ 
+Disallow: /*.json$
+
+# Netlify-specific paths
+Disallow: /.netlify/
+Disallow: /cdn-cgi/
+
+# Bloquear previews de branches
+Disallow: /deploy-preview
+Disallow: /*--*/
+
+Crawl-delay: 5
+
+Sitemap: https://lizardiznexusblog.netlify.app/sitemap-index.xml

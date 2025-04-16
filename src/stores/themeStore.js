@@ -12,5 +12,6 @@ export function setTheme(newTheme) {
 
 export function toggleTheme() {
   const newTheme = theme.get() === 'light' ? 'dark' : 'light';
-  setTheme(newTheme); 
+  setTheme(newTheme);
+  window.dispatchEvent(new CustomEvent('themeChanged')); 
 }
