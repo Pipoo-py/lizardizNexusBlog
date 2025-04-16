@@ -8,21 +8,17 @@
   for = "/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Encoding = "br"
-
 
 [[headers]]
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
     Content-Type = "text/css"
-    Content-Encoding = "br"
 
 [[headers]]
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
-    Content-Encoding = "br"
     X-Content-Type-Options = "nosniff"
 
 [[headers]]
@@ -33,6 +29,7 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "interest-cohort=()"
     Link = "</sitemap.xml>; rel=sitemap; type=application/xml"
+    Vary = "Accept-Encoding"
 
 [[redirects]]
   from = "/*"
@@ -40,12 +37,6 @@
   status = 200
   force = false
   conditions = {Language = ["en","es"], Country = ["US","VE"]}
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Content-Encoding = "br"
-    Vary = "Accept-Encoding"
 
 [[headers]]
   for = "/.netlify/*"
