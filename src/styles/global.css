@@ -89,7 +89,7 @@ body.dark .nav__ul-li a:hover {
 .article-post {
   max-width: 800px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 3rem;
   background-color: var(--base-blanco-nieve);
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
@@ -190,6 +190,14 @@ body.dark .nav__ul-li a:hover {
   border-top: 0.1rem solid var(--contraste-gris-perla);
   margin: 2rem 0;
 }
+
+.article-post span{
+  width: fit-content;
+  margin: 42px auto;
+  border-radius: 6px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.05);
+  
+}
 body.dark .article-post{
   background-color: var(--texto-carbon);
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
@@ -204,11 +212,17 @@ body.dark .article-post p{
   
 }
 body.dark .article-post code{
-  background-color: var(--acento-azul-profundo);
+  background-color: rgba(0,0,0, 0.1);
   color: var(--contraste-gris-perla);
   transition: var(--theme-transition);
   
 }
+
+body.dark .article-post li{
+  color: var(--contraste-gris-perla);
+  transition: var(--theme-transition);
+}
+
 
 body.dark .table-of-contents{
   background-color: transparent;
@@ -222,8 +236,4 @@ body.dark .footer{
 
 body.dark .tag{
   background-color: rgba(255, 255, 255, 0.1);
-}
-
-.giscus{
-  padding: 64px;
 }

@@ -1,19 +1,19 @@
-// src/content/config.ts
+
 import { defineCollection, z } from 'astro:content';
 
 const blog = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(), 
-    description: z.string().max(160), // Añadimos límite para meta descripción
+    description: z.string().max(160), 
     tags: z.array(z.string()),
     cover: z.object({
       src: z.string(),
       alt: z.string(),
-    }).optional(), // La imagen de portada ahora es opcional
+    }).optional(), 
     updatedDate: z.coerce.date().optional(),
-    heroImage: z.string().optional(), // Mantenemos heroImage por si lo usas
-    draft: z.boolean().optional(), // Añadimos soporte para borradores
+    heroImage: z.string().optional(), 
+    draft: z.boolean().optional(), 
   }),
 });
 

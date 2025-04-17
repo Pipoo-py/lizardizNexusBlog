@@ -60,7 +60,7 @@ export const Header = () => {
               <li className="nav__ul-li"> <a href="/" onClick={openMobileNav}>Inicio</a> </li>
               <li className="nav__ul-li"> <a href="/blog/" onClick={openMobileNav}>Artículos</a> </li>
               <li className="nav__ul-li"> <a href="/tags/" onClick={openMobileNav}>Categorías</a> </li>
-              <li className="nav__ul-li"> <a href="#skills" onClick={openMobileNav}>Sobre mi</a> </li>
+              <li className="nav__ul-li"> <a href="/about/" onClick={openMobileNav}>Sobre mi</a> </li>
               <li className="nav__ul-li"> <a href="https://lizardiznexus.netlify.app/" target="blank" onClick={openMobileNav}>Portafolio</a> </li>
               <li className="nav__ul-li li-theme" onClick={toggleTheme}>
                 {currentTheme === "light" ? <Moon /> : <Sun />}

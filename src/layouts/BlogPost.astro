@@ -4,9 +4,10 @@ import BaseHead from '../components/BaseHead.astro';
 import { Header } from '../components/Header.jsx';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+
 type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate } = Astro.props;
-console.log(pubDate);
+
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
@@ -18,67 +19,21 @@ const schemaData = {
     "url": "https://lizardiznexusblog.netlify.app/about"
   }
 };
-const initialTheme = typeof window !== 'undefined' ? 
-  localStorage.getItem('theme') || 'light' : 
-  'light';
 ---
 
-
 <html lang="es">
-	<head>
-		<BaseHead title={title} description={description} />
-		<script type="application/ld+json">{JSON.stringify(schemaData)}</script>
-	</head>
+  <head>
+    <BaseHead title={title} description={description} />
+    <script type="application/ld+json">{JSON.stringify(schemaData)}</script>
+  </head>
 
-	<body>
-		<Header client:load />
-		<main class="main-post">
-			<article class="article-post">
-				<h1 class="article-title">{title}</h1>
-					<slot />
-			</article>
-		</main>
-
-		 <script>
-      // Configuración dinámica de Giscus
-      function loadGiscus() {
-        const theme = localStorage.getItem('theme') || 'light';
-        const script = document.createElement('script');
-        script.src = 'https://giscus.app/client.js';
-        script.setAttribute('data-repo', 'Pipoo-py/lizardizNexusBlog');
-        script.setAttribute('data-repo-id', 'R_kgDOOajD0w');
-        script.setAttribute('data-category', 'Comentarios');
-        script.setAttribute('data-category-id', 'DIC_kwDOOajD084CpLGK');
-        script.setAttribute('data-mapping', 'url');
-        script.setAttribute('data-strict', '0');
-        script.setAttribute('data-reactions-enabled', '1');
-        script.setAttribute('data-emit-metadata', '0');
-        script.setAttribute('data-input-position', 'bottom');
-        script.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
-        script.setAttribute('data-lang', 'es');
-        script.crossOrigin = 'anonymous';
-        script.async = true;
-
-        document.querySelector('.main-post').appendChild(script);
-      }
- 
-      if (document.readyState === 'complete') {
-        loadGiscus();
-      } else {
-        window.addEventListener('load', loadGiscus);
-      }
-
-      window.addEventListener('themeChanged', () => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (iframe) {
-          iframe.contentWindow.postMessage(
-            { giscus: { setConfig: { theme: localStorage.getItem('theme') === 'dark' ? 'dark' : 'light' } } },
-            'https://giscus.app'
-          );
-        }
-      });
-    </script>
-
-		<Footer />
-	</body>
+  <body>
+    <Header client:load />
+    <main class="main-post">
+      <article class="article-post">
+        <h1 class="article-title">{title}</h1>
+        <slot />
+      </article>
+    <Footer />
+  </body>
 </html>

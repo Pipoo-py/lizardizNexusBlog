@@ -1,0 +1,205 @@
+---
+title: Guía Definitiva de React para 2025, fundamentos y prácticas actuales
+date: 2025-04-17
+description: Aprende React desde cero con las mejores prácticas de 2025. Instalación con Vite y ejemplos.
+tags: ['react', 'frontend', 'vite', 'hooks', 'componentes', 'javascript', 'guía-actualizada']
+updatedDate: 2025-04-27
+draft: false
+---
+
+import TableOfContents from "../../components/TableOfContents.astro"
+import ImageOptimized from "../../components/ImageOptimized.astro"
+import { CodeBlockComponent } from "../../components/CodeBlockComponent.jsx"
+
+export const headings = [
+  { depth: 2, slug: 'introduccion', text: 'Introducción' },
+  { depth: 2, slug: 'qué-es-react', text: 'Qué es React y por qué es relevante' },
+  { depth: 3, slug: 'libreria-explicacion', text: 'Entendiendo el concepto de librería' },
+  { depth: 2, slug: 'ventajas-clave', text: 'Principales ventajas de React' },
+  { depth: 2, slug: 'configuracion-proyecto', text: 'Configuración moderna de proyectos' },
+  { depth: 3, slug: 'pasos-vite', text: 'Creación de proyecto con Vite' },
+  { depth: 3, slug: 'estructura-recomendada', text: 'Organización de archivos' },
+  { depth: 2, slug: 'componentes-modernos', text: 'Desarrollo de componentes con Hooks' },
+  { depth: 3, slug: 'hooks-basicos', text: 'Uso de useState y useEffect' },
+  { depth: 3, slug: 'optimizacion', text: 'Mejores prácticas de rendimiento' },
+  { depth: 2, slug: 'conclusion', text: 'Conclusión y próximos pasos' },
+];
+
+<TableOfContents headings={ headings }/>
+
+## Introducción
+
+React continúa siendo la tecnología frontend más adoptada según encuestas recientes. En esta guía práctica descubrirás:
+
+- Cómo iniciar proyectos con herramientas modernas
+- La sintaxis actual de componentes funcionales
+- Diferencias entre enfoques nuevos y obsoletos
+- Optimizaciones esenciales desde el primer día
+
+## Qué es React y por qué es relevante
+
+<ImageOptimized src={import("../../assets/introReact/img1.webp")} alt="Imagen representando el logo de React" />
+
+React es una librería JavaScript mantenida por Meta, diseñada para construir interfaces de usuario interactivas mediante componentes reutilizables. Su importancia radica en:
+
+- Arquitectura flexible que permite integrar con otras librerías
+- Comunidad activa con actualizaciones constantes
+- Alto desempeño gracias al Virtual DOM
+- Curva de aprendizaje accesible para principiantes
+
+### Entendiendo el concepto de librería
+
+React se enfoca específicamente en la capa de vista de tu aplicación. A diferencia de un framework completo:
+
+- No impone arquitectura global
+- Permite elegir soluciones para routing o estado
+- Se puede integrar progresivamente en proyectos existentes
+
+## Principales ventajas de React
+
+1. **Componentización**: Divide interfaces en piezas independientes
+2. **JSX**: Sintaxis intuitiva para mezclar HTML con lógica JS
+3. **Ecosistema**: Miles de librerías compatibles (React Router, Redux, etc.)
+4. **Comunidad**: Soluciones documentadas para casi cualquier problema
+5. **Demanda laboral**: Habilidad más solicitada en ofertas frontend
+
+## Configuración moderna de proyectos
+
+### Creación de proyecto con Vite
+
+<ImageOptimized src={import("../../assets/introReact/img2.webp")} alt="Imagen representando el logo de React y Vite juntos" />
+
+Vite es la herramienta recomendada en 2025 por su velocidad y configuración optimizada:
+
+<CodeBlockComponent code={`
+    npm create vite@latest mi-app-react -- --template react
+    
+    cd mi-app-react
+
+    npm install
+
+    npm run dev
+  `}
+  language="bash"
+  showLineNumbers={false}
+/>
+
+**Principales beneficios de Vite:**
+- Tiempos de recarga ultrarrápidos
+- Configuración preoptimizada para producción
+- Soporte nativo para ES Modules
+- Integración sencilla con testing libraries
+
+### Organización de archivos
+
+Estructura recomendada para proyectos medianos:
+
+<CodeBlockComponent
+  code={`
+    src/
+    ├── components/
+    │   ├── Button/
+    │   │   ├── index.js
+    │   │   └── styles.css
+    ├── pages/
+    │   └── Home.js
+    ├── App.js
+    └── main.js
+  `}
+  language="plaintext"
+  showLineNumbers={false}
+/>
+
+## Desarrollo de componentes con Hooks
+
+### Uso de useState y useEffect
+
+**Componente contador básico:**
+
+<CodeBlockComponent
+  code={`
+    import { useState, useEffect } from 'react';
+
+    function Counter() {
+      const [count, setCount] = useState(0);
+
+      useEffect(() => {
+        document.title = \`Contador: \${count}\`;
+        return () => document.title = 'React App';
+      }, [count]);
+
+      return (
+        <div>
+          <p>Valor actual: {count}</p>
+          <button onClick={() => setCount(c => c + 1)}>
+            Incrementar
+          </button>
+        </div>
+      );
+    }
+  `}
+  language="javascript"
+  showLineNumbers={true}
+/>
+
+**Explicación clave:**
+- `useState` maneja el estado interno
+- `useEffect` sincroniza efectos secundarios
+- La dependencia `[count]` optimiza ejecuciones
+- Función de limpieza restaura valores
+
+### Mejores prácticas de rendimiento
+
+1. **Memoización de componentes:**
+<CodeBlockComponent code={`
+    import { memo } from 'react';
+  
+    const HeavyComponent = memo(function HeavyComponent({ data }) {
+    return <div>{processedData}</div>;
+    });
+    `}
+    language="javascript"
+    showLineNumbers={true}
+    />
+
+2. **Carga diferida de componentes:**
+
+<CodeBlockComponent code={`
+    import { lazy, Suspense } from 'react';
+
+    const LazyComponent = lazy(() => import('./LazyComponent'));
+
+    function App() {
+      return (
+        <Suspense fallback={<div>Cargando...</div>}>
+          <LazyComponent />
+        </Suspense>
+      );
+    }
+`}
+language="javascript"
+showLineNumbers={true}
+/>
+
+3. **Evitar renderizados innecesarios:**
+- Usar keys únicas en listas
+- Dividir componentes grandes
+- Usar useCallback para funciones
+
+## Conclusión y próximos pasos
+
+Para dominar React en 2025:
+
+1. Comienza con Vite para nuevos proyectos
+2. Domina los Hooks esenciales (useState, useEffect)
+3. Practica la creación de componentes reutilizables
+4. Implementa optimizaciones desde el inicio
+5. Explora el ecosistema (React Router, Context API)
+
+**Ejercicio práctico recomendado:**
+1. Crea un proyecto con Vite
+2. Implementa un componente de formulario con validación
+3. Agrega efectos de carga con useState y useEffect
+4. Optimiza el rendimiento con memoización
+
+¡Mucha suerte aprendiendo React! al inicio puede ser complicado, ¡Pero seguramente con práctica lo dominarás!

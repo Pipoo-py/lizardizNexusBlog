@@ -1,62 +1,240 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from "../components/BaseHead.astro"
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts"
+import { Header } from "../components/Header.jsx";
+
+const currentYear = new Date().getFullYear()
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="es">
+<head>
+    <BaseHead 
+        title={`${SITE_TITLE} | Desarrollador Frontend`} 
+        description={SITE_DESCRIPTION} 
+    />
+</head>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+<body>
+	<Header client:load/>
+    <main class="sobre-mi">
+        <section class="sobre-mi__content">
+            <header class="sobre-mi__header">
+                <h1 class="sobre-mi__title">Alejandro Salazar Lizardiz</h1>
+                <p class="sobre-mi__subtitle">Desarrollador Frontend · Venezuela</p>
+            </header>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+            <div class="sobre-mi__body">
+                <p class="sobre-mi__text">
+                    Especialista en desarrollo web moderno con más de 
+                    <span class="sobre-mi__highlight">{currentYear - 2023} años</span> 
+                    de experiencia creando proyectos.
+                </p>
+                
+                <div class="sobre-mi__skills">
+                    <span class="sobre-mi__skill">React</span>
+                    <span class="sobre-mi__skill">Astro</span>
+                </div>
+                  <div class="sobre-mi__experience-item">
+                        <h3 class="sobre-mi__experience-title">Optimización</h3>
+                        <p class="sobre-mi__experience-text">Performance web</p>
+                    </div>
+                </div>
+            </div>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+            <footer class="sobre-mi__footer">
+                <h2 class="sobre-mi__cta-title">¿Listo para trabajar juntos?</h2>
+                <div class="sobre-mi__buttons">
+                    <a href="mailto:lizardizwebdev@gmail.com" class="sobre-mi__button">
+                        Contactar por email
+                    </a>
+                    <a href="https://lizardiznexus.netlify.app/" target="_blank" class="sobre-mi__button sobre-mi__button--secondary">
+                        Ver Portafolio
+                    </a>
+                </div>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+<style>
+    .sobre-mi {
+        max-width: 800px;
+        margin: 80px auto;
+        padding: 2rem;
+    }
+
+    .sobre-mi__header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .sobre-mi__image-container {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid var(--acento-azul-profundo);
+    }
+
+    .sobre-mi__image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .sobre-mi__title {
+        font-size: 2rem;
+        color: var(--texto-carbon);
+        margin-bottom: 0.5rem;
+    }
+
+    .sobre-mi__subtitle {
+        color: var(--texto-pizarra);
+        font-size: 1.1rem;
+    }
+
+    .sobre-mi__body {
+        margin: 2rem 0;
+    }
+
+    .sobre-mi__text {
+        color: var(--texto-pizarra);
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .sobre-mi__highlight {
+        color: var(--acento-azul-profundo);
+        font-weight: 600;
+    }
+
+    .sobre-mi__skills {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 2rem 0;
+    }
+
+    .sobre-mi__skill {
+        background: var(--contraste-gris-perla);
+        color: var(--texto-carbon);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+
+    .sobre-mi__experience {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+
+    .sobre-mi__experience-item {
+        text-align: center;
+        padding: 1rem;
+        background: var(--contraste-gris-perla);
+        border-radius: 8px;
+    }
+
+    .sobre-mi__experience-title {
+        color: var(--acento-azul-profundo);
+        margin-bottom: 0.5rem;
+    }
+
+    .sobre-mi__experience-text {
+        color: var(--texto-pizarra);
+        font-size: 0.9rem;
+    }
+
+    .sobre-mi__footer {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--contraste-gris-perla);
+    }
+
+    .sobre-mi__cta-title {
+        color: var(--texto-carbon);
+        margin-bottom: 1rem;
+    }
+
+    .sobre-mi__buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .sobre-mi__button {
+        background: var(--acento-azul-profundo);
+        color: var(--base-blanco-nieve);
+        padding: 0.8rem 1.5rem;
+        border-radius: 25px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+
+    .sobre-mi__button--secondary {
+        background: none;
+        color: var(--acento-azul-profundo);
+        border: 2px solid var(--acento-azul-profundo);
+    }
+
+    /* Modo oscuro */
+    body.dark .sobre-mi__image-container {
+        border-color: var(--acento-teal);
+    }
+
+    body.dark .sobre-mi__title,
+    body.dark .sobre-mi__cta-title {
+        color: var(--base-blanco-nieve);
+    }
+
+    body.dark .sobre-mi__subtitle,
+    body.dark .sobre-mi__text,
+    body.dark .sobre-mi__experience-text {
+        color: var(--contraste-gris-perla);
+    }
+
+    body.dark .sobre-mi__skill,
+    body.dark .sobre-mi__experience-item {
+        background: var(--texto-pizarra);
+        color: var(--base-blanco-nieve);
+    }
+
+    body.dark .sobre-mi__highlight,
+    body.dark .sobre-mi__experience-title {
+        color: var(--contraste-gris-perla);
+    }
+
+    body.dark .sobre-mi__footer {
+        border-color: var(--texto-pizarra);
+    }
+
+    body.dark .sobre-mi__button {
+        background: var(--acento-teal);
+    }
+
+    body.dark .sobre-mi__button--secondary {
+        color: var(--contraste-gris-perla);
+        border-color: var(--acento-teal);
+    }
+
+    @media screen and (max-width: 768px) {
+        .sobre-mi {
+            padding: 1rem;
+        }
+        
+        .sobre-mi__buttons {
+            flex-direction: column;
+        }
+        
+        .sobre-mi__experience {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

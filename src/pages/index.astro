@@ -20,10 +20,23 @@ const latestThreePosts = recentPosts.slice(0, 3);
     <Header client:load />
     <main>
         <section class="main__container">
-            <h1>Últimos Artículos</h1>
-			<div class="blog-preview-list">
-            {
-                latestThreePosts.map(post => (
+            <!-- Sección de Introducción -->
+            <div class="intro-section">
+                <h1 class="intro-title">Explora el Mundo del Desarrollo Frontend</h1>
+                <p class="intro-text">
+                    En este espacio comparto mi viaje como desarrollador autodidacta, ofreciendo 
+                    <span class="highlight">guías prácticas</span>, 
+                    <span class="highlight">soluciones técnicas</span> y 
+                    <span class="highlight">análisis profundos</span> sobre tecnologías web modernas.<br/><br/>
+                    Descubre cómo dominar herramientas como Astro, React y JavaScript mientras construimos juntos proyectos reales aplicando las mejores prácticas de la industria.
+                </p>
+                <a href="/blog" class="cta-button">Ver Todos los Artículos →</a>
+            </div>
+
+            <!-- Últimos Artículos -->
+            <h2 class="section-title">Últimos Artículos</h2>
+            <div class="blog-preview-list">
+                {latestThreePosts.map(post => (
                     <PreviewPost
                         title={post.data.title}
                         date={post.data.date}
@@ -31,8 +44,7 @@ const latestThreePosts = recentPosts.slice(0, 3);
                         description={post.data.description}
                         url={`/blog/${post.slug}`}
                     />
-                ))
-            }
+                ))}
             </div>
         </section>
     </main>
@@ -41,18 +53,99 @@ const latestThreePosts = recentPosts.slice(0, 3);
 </html>
 
 <style>
-    .main__container{
-		padding: 32px;
-	}
-    .blog-preview-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 1.5rem;
-        margin-top: 1rem;
+    .intro-section {
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        text-align: center;
+        padding: 2rem 1rem;
     }
-    h1 {
+
+    .intro-title {
         color: var(--texto-carbon);
+        font-size: 2.5rem;
+        line-height: 1.2;
         margin-bottom: 1.5rem;
-        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .intro-text {
+        color: var(--texto-pizarra);
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .highlight {
+        color: var(--acento-teal);
+        font-weight: 500;
+        position: relative;
+        padding: 0 0.2em;
+    }
+
+    .cta-button {
+        display: inline-block;
+        background: var(--acento-teal);
+        color: var(--base-blanco-nieve);
+        padding: 0.8rem 1.5rem;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--theme-transition);
+        border: 2px solid transparent;
+    }
+
+    .cta-button:hover {
+        background: var(--acento-azul-profundo);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(11, 83, 148, 0.15);
+    }
+
+    .section-title {
+        color: var(--texto-carbon);
+        font-size: 1.8rem;
+        margin: 3rem 0 2rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--acento-teal);
+        margin: 0.5rem auto 0;
+        border-radius: 2px;
+    }
+
+    .main__container {
+        padding: 32px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    body.dark .intro-title{
+        color: var(--base-blanco-nieve);
+        transition: var(--theme-transition);
+    }
+
+    body.dark .highlight{
+        color: var(--contraste-gris-perla);
+        transition: var(--theme-transition);
+    }
+
+    @media (max-width: 768px) {
+        .intro-title {
+            font-size: 2rem;
+        }
+        
+        .intro-text {
+            font-size: 1rem;
+        }
+        
+        .cta-button {
+            padding: 0.7rem 1.2rem;
+        }
     }
 </style>
