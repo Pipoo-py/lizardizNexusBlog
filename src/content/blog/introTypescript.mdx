@@ -3,7 +3,7 @@ title: "TypeScript, la robustez de las páginas modernas."
 date: 2025-04-28
 description: "Descubre qué es TypeScript y por qué es relevante para hacer webs más robustas."
 tags: ['frontend', 'desarrollo-web', 'typescript', 'javascript', "mejores-practicas", "tipado-estatico"]
-updatedDate: 2025-04-28
+updatedDate: 2025-05-01
 draft: false
 ---
 
@@ -234,8 +234,6 @@ showLineNumbers={true}
 />
 
 Muchos entornos de desarrollo modernos y herramientas de build (como Webpack, Parcel, Vite, y por supuesto, Astro) tienen soporte integrado para TypeScript, simplificando aún más el proceso de compilación.
-
-**Nota Importante:** Si después de usar este código sigues experimentando errores como `[variable] is not defined` que apuntan a variables *dentro* de los bloques de código (`<CodeBlockComponent code="...">`), es muy probable que el problema no esté en el código TypeScript que te he proporcionado (que es sintácticamente correcto para *mostrar* conceptos), sino en cómo tu entorno Astro, la configuración de MDX, o la implementación del componente `CodeBlockComponent` maneja o intenta ejecutar el contenido de las strings. Te recomiendo encarecidamente revisar la documentación o el código fuente de tu `CodeBlockComponent` y tu setup de Astro MDX para asegurarte de que el contenido de `code` se trate solo como texto a renderizar y no como código a ejecutar durante el proceso de construcción o renderizado de la página.
 
 ## Conclusion
 
